@@ -23,6 +23,9 @@ namespace WebAPISample.Controllers
         public IActionResult Get()
         {
             // Retrieve all movies from db logic
+           // var MovieList = _context.Movies.ToList();
+            
+
             return Ok(new string[] { "movie1 string", "movie2 string" });
         }
 
@@ -40,6 +43,8 @@ namespace WebAPISample.Controllers
         public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
+            _context.Movies.Add(value);
+            _context.SaveChanges();
             return Ok();
         }
 
