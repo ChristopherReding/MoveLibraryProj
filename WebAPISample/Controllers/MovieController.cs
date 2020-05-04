@@ -22,16 +22,11 @@ namespace WebAPISample.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-<<<<<<< HEAD
-            var movies = _context.Movies;
-            return Ok(new string[] { movies.ToString() }) ;
-=======
-            // Retrieve all movies from db logic
-           // var MovieList = _context.Movies.ToList();
-            
 
-            return Ok(new string[] { "movie1 string", "movie2 string" });
->>>>>>> ce82241f46cfc3b2a5a279ffa34c63a8b542ebba
+            // Retrieve all movies from db logic
+            var MovieList = _context.Movies.ToList();
+            return Ok(MovieList);
+
         }
 
         // GET api/movie/5
