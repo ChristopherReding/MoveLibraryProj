@@ -25,21 +25,20 @@ namespace WebAPISample.Controllers
 
             // Retrieve all movies from db logic
             var MovieList = _context.Movies.ToList();
-
             return Ok( MovieList );
             //return Ok(new string[] { "movie1 string", "movie2 string" });
             //return JsonResult(new
             //{
             //    msg = String.Format("Fist Name: {0}", values[0])
             //});
+
         }
         // GET api/movie/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // Retrieve movie by id from db logic
-            // return Ok(movie);
-            return Ok();
+            Movie movie = _context.Movies.Where(m => m.MovieId == id).Single();
+            return Ok(movie);
         }
 
         // POST api/movie
