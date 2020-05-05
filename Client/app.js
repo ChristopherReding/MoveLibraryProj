@@ -59,5 +59,6 @@
 
    
     $('#my-form').submit( processForm );
-    $('#displayMovies').submit( getMovies );
+    //$('#displayMovies').submit( getMovies );
+    window.onload = getMovies;
 })(jQuery);
