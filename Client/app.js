@@ -40,16 +40,8 @@
                 let movieData = data;
                 for(let i =0; i< movieData.length; i++)
                 {
-                    tableData += "<tr><td>" + movieData[i].title + "</td><td>" + movieData[i].director + "</td><td>" + movieData[i].genre + "</td></tr>";
+                    tableData += "<tr><td>" + movieData[i].title + "</td><td>" + movieData[i].director + "</td><td>" + movieData[i].genre + "</td><td><a href='#'>Edit</a></td></tr>";
                 }
-
-                //array.forEach(function(currentValue, index, arr), thisValue)
-                //movieData.forEach(function(item, index), )  {
-                //    tableData += "<tr><td>" + item.Title + "</td><td>" + item.director + "</td><td>" + item.genre + "</td></tr>";
-                // }
-                
-                
-                //<tr><td></td><td></td><td></td></tr>
                 document.getElementById('response').innerHTML = tableHeader + tableData;
                 
             },
