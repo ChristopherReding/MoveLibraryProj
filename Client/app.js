@@ -91,7 +91,12 @@
 
    
     $('#my-form').submit( processForm );
-    $('#displayMovies').submit( getMovies );
-    $('#displaySingleMovie').submit ( getSingleMovie );
-    $('#updateMovie').submit ( editMovie );
+
+    //$('#displayMovies').submit( getMovies );
+    //$('#displaySingleMovie').submit ( getSingleMovie );
+    //$('#updateMovie').submit ( editMovie );
+
+    //$('#displayMovies').submit( getMovies );
+    window.onload = getMovies;
+
 })(jQuery);
