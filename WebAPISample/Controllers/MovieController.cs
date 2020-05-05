@@ -37,9 +37,8 @@ namespace WebAPISample.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // Retrieve movie by id from db logic
-            // return Ok(movie);
-            return Ok();
+            Movie movie = _context.Movies.Where(m => m.MovieId == id).Single();
+            return Ok(movie);
         }
 
         // POST api/movie
