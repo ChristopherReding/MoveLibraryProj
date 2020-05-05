@@ -30,8 +30,7 @@
             url: 'https://localhost:44325/api/movie',
             dataType: 'json',
             type: 'get',
-            contentType: 'application/json',
-            data: "null",
+            contentType: 'application/json',            
             success: function( data, textStatus, jQxhr ){
                 console.log("it worked!");
                 //$('#response pre').html( data );
@@ -40,7 +39,7 @@
                 let movieData = data;
                 for(let i =0; i< movieData.length; i++)
                 {
-                    tableData += "<tr><td>" + movieData[i].title + "</td><td>" + movieData[i].director + "</td><td>" + movieData[i].genre + "</td><td><a href='#'>Edit</a></td></tr>";
+                    tableData += "<tr id='Movie-"+movieData[i].movieId+"' ><td><input value='" + movieData[i].title + "'></input></td><td><input value='" + movieData[i].director + "'></input></td><td><input value ='" + movieData[i].genre + "'></input></td><td><a href='http://localhost:44325/api/movie/"+movieData[i].movieId+"'>Edit</a></td></tr>";
                 }
                 document.getElementById('response').innerHTML = tableHeader + tableData;
                 
@@ -56,8 +55,43 @@
         e.preventDefault();
     }
 
+    // function getSingleMovie(e){
+    //     $.ajax({
+    //         url: 'https://localhost:44325/api/movie',
+    //         dataType: 'json',
+    //         type: 'get',
+    //         contentType: 'application/json',
+    //         data: ,
+    //         success: function ( data, textStatus, jQxhr ){
+    //             console.log("edit sucess!");
+
+
+    //         },
+    //         error: function( jqXhr, textStatus, errorThrown ){
+    //             console.log( errorThrown );
+
+    // }
+
+    // function editMovie(e){
+    //     $.ajax({
+    //         url: 'https://localhost:44325/api/movie',
+    //         dataType: 'json',
+    //         type: 'put',
+    //         contentType: 'application/json',
+    //         data: JSON.stringify(dict),
+    //         success: function ( data, textStatus, jQxhr ){
+    //             console.log("edit sucess!");
+
+    //         },
+    //         error: function( jqXhr, textStatus, errorThrown ){
+    //             console.log( errorThrown );
+
+    // }
+
 
    
     $('#my-form').submit( processForm );
     $('#displayMovies').submit( getMovies );
+    $('#displaySingleMovie').submit ( getSingleMovie );
+    $('#updateMovie').submit ( editMovie );
 })(jQuery);
