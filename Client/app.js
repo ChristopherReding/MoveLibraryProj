@@ -39,7 +39,7 @@
                 let movieData = data;
                 for(let i =0; i< movieData.length; i++)
                 {
-                    tableData += "<tr id='Movie-"+movieData[i].movieId+"' ><td><input value='" + movieData[i].title + "'></input></td><td><input value='" + movieData[i].director + "'></input></td><td><input value ='" + movieData[i].genre + "'></input></td><td><a href='http://localhost:44325/api/movie/"+movieData[i].movieId+"'>Edit</a></td></tr>";
+                    tableData += "<tr><td><input name = 'title-"+movieData[i].movieId+"' value='" + movieData[i].title + "'></input></td><td><input name='director-"+movieData[i].movieId+"' value='" + movieData[i].director + "'></input></td><td><input name='genre-"+movieData[i].movieId+"' value ='" + movieData[i].genre + "'></input></td><td><button type='submit' id='"+movieData[i].movieId+"'>Update</button></td></tr>";
                 }
                 document.getElementById('response').innerHTML = tableHeader + tableData;
                 
@@ -73,6 +73,12 @@
     // }
 
     // function editMovie(e){
+    //     var dict = {
+    //         movieId,
+    //         Title : this["title"].value,
+    //         Director: this["director"].value,
+    //         Genre: this["genre"].value
+    //     };
     //     $.ajax({
     //         url: 'https://localhost:44325/api/movie',
     //         dataType: 'json',
@@ -86,17 +92,20 @@
     //         error: function( jqXhr, textStatus, errorThrown ){
     //             console.log( errorThrown );
 
-    // }
+    // });
+    // e.preventDefault();
+    //     }
+
 
 
    
     $('#my-form').submit( processForm );
 
-    //$('#displayMovies').submit( getMovies );
+    $('#displayMovies').submit( getMovies );
     //$('#displaySingleMovie').submit ( getSingleMovie );
-    //$('#updateMovie').submit ( editMovie );
+    //$('#update-form').submit ( editMovie );
 
     //$('#displayMovies').submit( getMovies );
-    window.onload = getMovies;
+    //window.onload = getMovies;
 
 })(jQuery);
