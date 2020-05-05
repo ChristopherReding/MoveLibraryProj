@@ -34,7 +34,24 @@
             data: "null",
             success: function( data, textStatus, jQxhr ){
                 console.log("it worked!");
-                $('#response pre').html( data );
+                //$('#response pre').html( data );
+                let tableHeader = "<tr><td>Title</td><td>Director</td><td>Genre</td></tr>"
+                let tableData = " ";
+                let movieData = data;
+                for(let i =0; i< movieData.length; i++)
+                {
+                    tableData += "<tr><td>" + movieData[i].title + "</td><td>" + movieData[i].director + "</td><td>" + movieData[i].genre + "</td></tr>";
+                }
+
+                //array.forEach(function(currentValue, index, arr), thisValue)
+                //movieData.forEach(function(item, index), )  {
+                //    tableData += "<tr><td>" + item.Title + "</td><td>" + item.director + "</td><td>" + item.genre + "</td></tr>";
+                // }
+                
+                
+                //<tr><td></td><td></td><td></td></tr>
+                document.getElementById('response').innerHTML = tableHeader + tableData;
+                
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
@@ -42,9 +59,13 @@
             }
         });
 
+        
+
         e.preventDefault();
     }
 
+
+   
     $('#my-form').submit( processForm );
     $('#displayMovies').submit( getMovies );
 })(jQuery);
