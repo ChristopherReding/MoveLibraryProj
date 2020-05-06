@@ -48,10 +48,10 @@
                 document.getElementById('response').innerHTML = tableHeader + tableData;
 
 
-                $("a").click(function(){
+                $("a").click(function(e){
                     var id = $(this).attr('id');
                     console.log(id);
-                    editMovie(id);
+                    editMovie(id, e);
                 });
             
                 $('.update-button').click( function(){
@@ -70,7 +70,9 @@
 
         
 
-        e.preventDefault();
+        if(e){
+            e.preventDefault();
+        }
     }
 
 
@@ -94,20 +96,22 @@
     // }
 
 
-    function editMovie( id ){
-        var dict = {
-            movieId: id,
-        	title : document.getElementById("title-"+id).value,  //$("#title-"+id).attr("value"),
-            director: document.getElementById("director-"+id).value,
-            genre: document.getElementById("genre-"+id).value
+    function editMovie( id, e ){
+        let dict = {
+            MovieId: parseInt(id),
+        	Title: document.getElementById("title-"+id).value,  //$("#title-"+id).attr("value"),
+            Genre: document.getElementById("genre-"+id).value,
+            Director: document.getElementById("director-"+id).value
+            
         };
+        //
         //alert( $("#title-"+id).attr("value"));
-        alert( dict.title );
-        console.log(dict);
+        //alert( dict.title );
+        console.log(JSON.stringify(dict));
         $.ajax({
-            url: 'http://localhost:44325/api/movie',
-            dataType: 'json',
-            type: 'Put',
+            url: 'https://localhost:44325/api/movie',
+            type: 'PUT',
+            dataType: 'text',
             contentType: 'application/json',
             data: JSON.stringify(dict),
             success: function( data, textStatus, jQxhr ){
@@ -117,10 +121,12 @@
                 console.log( errorThrown );
                 alert("error");
             }
+        }).then(function(){
+            alert("hi");
         });
 
-
-        //e.preventDefault();
+        e.preventDefault();
+        
     }
 
 
@@ -129,11 +135,8 @@
     window.onload = getMovies;
     $('#my-form').submit( processForm );
     
-    
 
     
-    
-
 
     
 })(jQuery);
