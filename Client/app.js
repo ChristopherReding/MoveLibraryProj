@@ -97,16 +97,17 @@
     function editMovie( id ){
         var dict = {
             movieId: id,
-        	Title : document.getElementById("title-"+id).value,  //$("#title-"+id).attr("value"),
-            Director: document.getElementById("director-"+id).value,
-            Genre: document.getElementById("genre-"+id).value
+        	title : document.getElementById("title-"+id).value,  //$("#title-"+id).attr("value"),
+            director: document.getElementById("director-"+id).value,
+            genre: document.getElementById("genre-"+id).value
         };
         //alert( $("#title-"+id).attr("value"));
-        alert( dict.Title );
+        alert( dict.title );
+        console.log(dict);
         $.ajax({
             url: 'http://localhost:44325/api/movie',
             dataType: 'json',
-            type: 'put',
+            type: 'Put',
             contentType: 'application/json',
             data: JSON.stringify(dict),
             success: function( data, textStatus, jQxhr ){
